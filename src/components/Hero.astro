@@ -20,7 +20,12 @@ const stats = [
         Bridging service management and technology to deliver impactful digital
         solutions — with an Agile mindset and a data-driven approach.
       </p>
-      <a href="#experience" class="hero-cta hero-fade hero-fade-4">View my work →</a>
+      <a href="#experience" class="hero-cta hero-fade hero-fade-4">
+        <span>View my work</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </div>
     <div class="hero-right">
       <div class="hero-stats">
@@ -41,21 +46,22 @@ const stats = [
 
 <style>
   .hero {
-    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+    overflow: hidden;
   }
 
   .hero-inner {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 80vh;
+    grid-template-columns: 1.1fr 0.9fr;
+    min-height: 90vh;
   }
 
   .hero-left {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 4rem 3rem 4rem 2rem;
-    max-width: 700px;
+    padding: 5rem 4rem 5rem 0;
+    max-width: 640px;
     margin-left: auto;
   }
 
@@ -63,13 +69,13 @@ const stats = [
   .hero-fade {
     opacity: 0;
     transform: translateY(24px);
-    animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: heroFadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  .hero-fade-1 { animation-delay: 0.1s; }
-  .hero-fade-2 { animation-delay: 0.25s; }
-  .hero-fade-3 { animation-delay: 0.4s; }
-  .hero-fade-4 { animation-delay: 0.55s; }
+  .hero-fade-1 { animation-delay: 0.15s; }
+  .hero-fade-2 { animation-delay: 0.3s; }
+  .hero-fade-3 { animation-delay: 0.5s; }
+  .hero-fade-4 { animation-delay: 0.65s; }
 
   @keyframes heroFadeIn {
     to {
@@ -83,16 +89,28 @@ const stats = [
     font-size: 0.75rem;
     color: var(--color-gold);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 1.5rem;
+    letter-spacing: 0.14em;
+    margin-bottom: 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background-color: var(--color-gold);
   }
 
   .hero-name {
     font-family: 'DM Serif Display', serif;
-    font-size: 3.5rem;
-    line-height: 1.1;
+    font-size: 4rem;
+    line-height: 1.08;
     color: var(--color-ink);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
+    letter-spacing: -0.01em;
   }
 
   .hero-name em {
@@ -105,28 +123,38 @@ const stats = [
     font-weight: 300;
     font-size: 1.125rem;
     color: var(--color-ink-muted);
-    line-height: 1.7;
-    margin-bottom: 2rem;
-    max-width: 480px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    max-width: 440px;
   }
 
   .hero-cta {
     display: inline-flex;
     align-items: center;
+    gap: 10px;
     font-family: 'Outfit', sans-serif;
     font-weight: 500;
     font-size: 0.9375rem;
     color: var(--color-white);
     background-color: var(--color-accent);
-    padding: 14px 28px;
-    border-radius: 6px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 15px 30px;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.25s, transform 0.25s, box-shadow 0.25s;
     width: fit-content;
   }
 
+  .hero-cta svg {
+    transition: transform 0.25s;
+  }
+
   .hero-cta:hover {
+    background-color: var(--color-accent-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(26, 58, 42, 0.25);
+    box-shadow: 0 6px 20px rgba(26, 58, 42, 0.2);
+  }
+
+  .hero-cta:hover svg {
+    transform: translateX(3px);
   }
 
   .hero-right {
@@ -135,24 +163,38 @@ const stats = [
     justify-content: center;
     align-items: center;
     background-color: var(--color-accent);
-    padding: 4rem 2rem;
+    padding: 4rem 3rem;
+    position: relative;
+  }
+
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at 30% 20%, rgba(196, 163, 90, 0.08) 0%, transparent 60%);
+    pointer-events: none;
   }
 
   .hero-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-    margin-bottom: 3rem;
+    gap: 3rem 4rem;
+    margin-bottom: 3.5rem;
+    position: relative;
   }
 
   .stat {
     text-align: center;
+    position: relative;
   }
 
   .stat-value {
     display: block;
     font-family: 'DM Serif Display', serif;
-    font-size: 2.5rem;
+    font-size: 2.75rem;
     color: var(--color-white);
     line-height: 1;
     margin-bottom: 0.5rem;
@@ -161,14 +203,19 @@ const stats = [
   .stat-label {
     font-family: 'Outfit', sans-serif;
     font-weight: 300;
-    font-size: 0.875rem;
-    color: var(--color-accent-light);
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .hero-availability {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 10px 20px;
+    border-radius: 100px;
   }
 
   .availability-dot {
@@ -176,19 +223,20 @@ const stats = [
     height: 8px;
     border-radius: 50%;
     background-color: var(--color-green-dot);
-    box-shadow: 0 0 6px var(--color-green-dot);
+    box-shadow: 0 0 8px var(--color-green-dot);
     animation: pulse 2s ease-in-out infinite;
   }
 
   @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+    0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--color-green-dot); }
+    50% { opacity: 0.6; box-shadow: 0 0 4px var(--color-green-dot); }
   }
 
   .availability-text {
     font-family: 'DM Mono', monospace;
-    font-size: 0.8125rem;
-    color: var(--color-accent-light);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.02em;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -210,25 +258,25 @@ const stats = [
     }
 
     .hero-left {
-      padding: 3rem 1.25rem;
+      padding: 3.5rem 1.5rem;
       max-width: none;
       margin-left: 0;
     }
 
     .hero-name {
-      font-size: 2.5rem;
+      font-size: 2.75rem;
     }
 
     .hero-right {
-      padding: 3rem 1.25rem;
+      padding: 3rem 1.5rem;
     }
 
     .hero-stats {
-      gap: 1.5rem;
+      gap: 2rem 3rem;
     }
 
     .stat-value {
-      font-size: 2rem;
+      font-size: 2.25rem;
     }
   }
 
@@ -238,7 +286,7 @@ const stats = [
     }
 
     .hero-name {
-      font-size: 2rem;
+      font-size: 2.25rem;
     }
 
     .hero-bio {
@@ -255,7 +303,7 @@ const stats = [
     }
 
     .hero-stats {
-      gap: 1.25rem;
+      gap: 1.5rem 2rem;
     }
 
     .stat-value {
@@ -263,7 +311,7 @@ const stats = [
     }
 
     .stat-label {
-      font-size: 0.8125rem;
+      font-size: 0.75rem;
     }
   }
 </style>

@@ -9,45 +9,67 @@
       <span class="section-rule"></span>
     </div>
     <div class="about-content reveal reveal-delay-1">
-      <p>
-        IT Engineer with a background in service and project management, aspiring to
-        contribute organizational talents and proven expertise to leading companies in
-        the luxury and tech sectors. Highly curious individual with a strong desire for
-        continuous learning and professional growth in dynamic environments.
-      </p>
-      <p>
-        Experienced in Agile methodologies, data analytics, and service delivery
-        optimization — I believe the best solutions come from understanding both the
-        data and the people behind it.
-      </p>
+      <div class="about-accent" aria-hidden="true"></div>
+      <div class="about-text">
+        <p>
+          IT Engineer with a background in service and project management, aspiring to
+          contribute organizational talents and proven expertise to leading companies in
+          the luxury and tech sectors. Highly curious individual with a strong desire for
+          continuous learning and professional growth in dynamic environments.
+        </p>
+        <p>
+          Experienced in Agile methodologies, data analytics, and service delivery
+          optimization — I believe the best solutions come from understanding both the
+          data and the people behind it.
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
   .about {
-    padding: 5rem 0;
+    padding: 6rem 0;
+    background-color: var(--color-bg);
   }
 
   .about-content {
-    max-width: 720px;
+    display: flex;
+    gap: 2rem;
+    max-width: 760px;
   }
 
-  .about-content p {
+  .about-accent {
+    width: 3px;
+    min-height: 100%;
+    background: linear-gradient(to bottom, var(--color-gold), var(--color-accent));
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  .about-text p {
     font-family: 'Outfit', sans-serif;
     font-weight: 300;
     font-size: 1.125rem;
-    line-height: 1.8;
+    line-height: 1.85;
     color: var(--color-ink-muted);
     margin-bottom: 1.5rem;
   }
 
-  .about-content p:last-child {
+  .about-text p:last-child {
     margin-bottom: 0;
   }
 
   @media (max-width: 480px) {
-    .about-content p {
+    .about {
+      padding: 3.5rem 0;
+    }
+
+    .about-content {
+      gap: 1.25rem;
+    }
+
+    .about-text p {
       font-size: 1rem;
     }
   }

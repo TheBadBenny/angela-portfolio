@@ -39,7 +39,8 @@ const skillGroups = [
 
 <style>
   .skills {
-    padding: 5rem 0;
+    padding: 6rem 0;
+    background-color: var(--color-bg);
   }
 
   .skill-groups {
@@ -51,7 +52,8 @@ const skillGroups = [
   .skill-group-title {
     font-family: 'DM Serif Display', serif;
     font-size: 1.125rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    color: var(--color-ink);
   }
 
   .skill-chips {
@@ -63,18 +65,33 @@ const skillGroups = [
   .chip {
     font-family: 'Outfit', sans-serif;
     font-weight: 400;
-    font-size: 0.875rem;
-    color: var(--color-ink);
-    background-color: var(--color-accent-light);
-    padding: 8px 16px;
+    font-size: 0.8125rem;
+    color: var(--color-ink-muted);
+    background-color: transparent;
+    border: 1px solid var(--color-border-strong);
+    padding: 9px 18px;
     border-radius: 100px;
-    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     cursor: default;
+    letter-spacing: 0.01em;
   }
 
   .chip:hover {
     background-color: var(--color-accent);
+    border-color: var(--color-accent);
     color: var(--color-white);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 58, 42, 0.15);
+  }
+
+  @media (max-width: 480px) {
+    .skills {
+      padding: 3.5rem 0;
+    }
+
+    .chip {
+      padding: 8px 14px;
+      font-size: 0.8125rem;
+    }
   }
 </style>

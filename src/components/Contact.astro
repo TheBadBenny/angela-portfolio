@@ -14,13 +14,11 @@ const languages = [
       <span class="section-rule"></span>
     </div>
     <div class="lang-chips reveal reveal-delay-1">
-      {languages.map((item, i) => (
-        <>
-          <span class="lang-chip">
-            <strong>{item.lang}</strong> ({item.level})
-          </span>
-          {i < languages.length - 1 && <span class="lang-sep" aria-hidden="true">·</span>}
-        </>
+      {languages.map(item => (
+        <span class="lang-chip">
+          <strong>{item.lang}</strong>
+          <span class="lang-level">{item.level}</span>
+        </span>
       ))}
     </div>
   </div>
@@ -28,20 +26,42 @@ const languages = [
 
 <section class="contact" id="contact">
   <div class="container contact-inner">
-    <div class="section-header reveal">
+    <div class="contact-header reveal">
       <span class="section-index">07 /</span>
-      <h2 class="section-title">Contact</h2>
-      <span class="section-rule"></span>
+      <span class="contact-label">Get in touch</span>
     </div>
-    <p class="contact-headline reveal reveal-delay-1">Let's build something worth shipping.</p>
-    <div class="contact-details reveal reveal-delay-2">
-      <a href="mailto:aangelap19198@gmail.com" class="contact-link">aangelap19198@gmail.com</a>
-      <a href="tel:+34636843243" class="contact-link">+34 636 843 243</a>
-      <span class="contact-link">Madrid, Spain</span>
-    </div>
-    <div class="contact-social reveal reveal-delay-3">
-      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">LinkedIn</a>
-      <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">GitHub</a>
+    <h2 class="contact-headline reveal reveal-delay-1">Let's build something<br />worth shipping.</h2>
+    <div class="contact-grid reveal reveal-delay-2">
+      <div class="contact-details">
+        <a href="mailto:aangelap19198@gmail.com" class="contact-link">
+          <span class="contact-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </span>
+          aangelap19198@gmail.com
+        </a>
+        <a href="tel:+34636843243" class="contact-link">
+          <span class="contact-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          +34 636 843 243
+        </a>
+        <span class="contact-link">
+          <span class="contact-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          Madrid, Spain
+        </span>
+      </div>
+      <div class="contact-social">
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="social-link">
+          <span>LinkedIn</span>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" class="social-link">
+          <span>GitHub</span>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -53,108 +73,191 @@ const languages = [
 </footer>
 
 <style>
+  /* Languages */
   .languages {
-    padding: 5rem 0;
+    padding: 6rem 0;
+    background-color: var(--color-bg-2);
   }
 
   .lang-chips {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
     gap: 12px;
   }
 
   .lang-chip {
     font-family: 'Outfit', sans-serif;
-    font-weight: 300;
-    font-size: 1rem;
+    font-weight: 400;
+    font-size: 0.875rem;
     color: var(--color-ink);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: var(--shadow-sm);
   }
 
   .lang-chip strong {
-    font-weight: 500;
+    font-weight: 600;
   }
 
-  .lang-sep {
+  .lang-level {
     color: var(--color-ink-faint);
-    font-size: 1.25rem;
+    font-weight: 300;
   }
 
+  /* Contact — dark section */
   .contact {
-    padding: 5rem 0;
+    padding: 6rem 0;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  .contact-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-header .section-index {
+    color: var(--color-gold);
+  }
+
+  .contact-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
 
   .contact-headline {
     font-family: 'DM Serif Display', serif;
-    font-size: 2rem;
-    color: var(--color-ink);
-    margin-bottom: 2rem;
+    font-size: 2.75rem;
+    color: var(--color-white);
+    margin-bottom: 3rem;
+    line-height: 1.15;
+  }
+
+  .contact-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3rem;
   }
 
   .contact-details {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 2rem;
+    gap: 0.5rem;
   }
 
   .contact-link {
     font-family: 'Outfit', sans-serif;
     font-weight: 400;
-    font-size: 1rem;
-    color: var(--color-ink-muted);
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.7);
     transition: color 0.2s;
-    width: fit-content;
     min-height: 44px;
     display: inline-flex;
     align-items: center;
+    gap: 12px;
+  }
+
+  .contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
   }
 
   a.contact-link:hover {
-    color: var(--color-accent);
+    color: var(--color-white);
   }
 
   .contact-social {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
-  .contact-social a {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.875rem;
-    color: var(--color-accent);
-    transition: opacity 0.2s;
-    min-height: 44px;
+  .social-link {
     display: inline-flex;
     align-items: center;
+    gap: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 18px;
+    border-radius: 100px;
+    transition: all 0.25s;
+    min-height: 44px;
   }
 
-  .contact-social a:hover {
-    opacity: 0.7;
+  .social-link:hover {
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.06);
   }
 
+  .social-link svg {
+    transition: transform 0.2s;
+  }
+
+  .social-link:hover svg {
+    transform: translate(2px, -2px);
+  }
+
+  /* Footer */
   .footer {
     padding: 2rem 0;
-    border-top: 1px solid var(--color-border);
+    background-color: var(--color-accent);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .footer-inner p {
     font-family: 'Outfit', sans-serif;
     font-weight: 300;
-    font-size: 0.875rem;
-    color: var(--color-ink-faint);
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.35);
     text-align: center;
   }
 
   @media (max-width: 768px) {
     .contact-headline {
-      font-size: 1.5rem;
+      font-size: 2rem;
+    }
+
+    .contact-grid {
+      flex-direction: column;
+      gap: 2rem;
     }
   }
 
   @media (max-width: 480px) {
+    .languages {
+      padding: 3.5rem 0;
+    }
+
+    .contact {
+      padding: 3.5rem 0;
+    }
+
     .contact-headline {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
+    }
+
+    .lang-chip {
+      padding: 10px 16px;
+      font-size: 0.8125rem;
     }
   }
 </style>

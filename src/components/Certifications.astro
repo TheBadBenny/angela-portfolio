@@ -15,58 +15,90 @@ const certifications = [
       <h2 class="section-title">Certifications</h2>
       <span class="section-rule"></span>
     </div>
-    <ul class="cert-list">
+    <div class="cert-grid">
       {certifications.map(cert => (
-        <li class="cert-item reveal">
-          <span class="cert-marker" aria-hidden="true"></span>
+        <div class="cert-card reveal">
+          <span class="cert-marker" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
           <div>
             <span class="cert-name">{cert.name}</span>
-            {cert.issuer && <span class="cert-issuer"> — {cert.issuer}</span>}
+            {cert.issuer && <span class="cert-issuer">{cert.issuer}</span>}
           </div>
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   </div>
 </section>
 
 <style>
   .certifications {
-    padding: 5rem 0;
+    padding: 6rem 0;
+    background-color: var(--color-bg);
   }
 
-  .cert-list {
-    list-style: none;
+  .cert-grid {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 0.75rem;
   }
 
-  .cert-item {
+  .cert-card {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 16px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+
+  .cert-card:hover {
+    border-color: var(--color-gold);
+    box-shadow: 0 2px 8px rgba(196, 163, 90, 0.1);
   }
 
   .cert-marker {
-    width: 8px;
-    height: 8px;
-    min-width: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
     border-radius: 50%;
-    background-color: var(--color-gold);
-    margin-top: 8px;
+    background-color: var(--color-gold-light);
+    color: var(--color-gold);
+    margin-top: 2px;
   }
 
   .cert-name {
     font-family: 'Outfit', sans-serif;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.9375rem;
     color: var(--color-ink);
+    display: block;
+    line-height: 1.4;
   }
 
   .cert-issuer {
     font-family: 'Outfit', sans-serif;
     font-weight: 300;
-    font-size: 0.9375rem;
-    color: var(--color-ink-muted);
+    font-size: 0.8125rem;
+    color: var(--color-ink-faint);
+    display: block;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 480px) {
+    .certifications {
+      padding: 3.5rem 0;
+    }
+
+    .cert-card {
+      padding: 1rem 1.25rem;
+    }
   }
 </style>
