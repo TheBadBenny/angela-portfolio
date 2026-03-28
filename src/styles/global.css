@@ -88,6 +88,55 @@ section {
   background-color: var(--color-border);
 }
 
+/* Scroll-reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Stagger children animation */
+.stagger-children .reveal {
+  transition-delay: calc(var(--i, 0) * 0.08s);
+}
+
+/* Section rule grow animation */
+.section-rule {
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.visible .section-rule,
+.section-header.visible .section-rule {
+  transform: scaleX(1);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .section-rule {
+    transform: scaleX(1);
+    transition: none;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0 1.25rem;

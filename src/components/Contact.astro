@@ -1,19 +1,19 @@
 ---
 const languages = [
   { lang: 'Spanish', level: 'Native' },
-  { lang: 'English', level: 'Advanced / C1' },
+  { lang: 'English', level: 'Advanced/C1' },
   { lang: 'French', level: 'Elementary' },
 ];
 ---
 
 <section class="languages" id="languages">
   <div class="container languages-inner">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-index">06 /</span>
       <h2 class="section-title">Languages</h2>
       <span class="section-rule"></span>
     </div>
-    <div class="lang-chips">
+    <div class="lang-chips reveal reveal-delay-1">
       {languages.map((item, i) => (
         <>
           <span class="lang-chip">
@@ -28,18 +28,18 @@ const languages = [
 
 <section class="contact" id="contact">
   <div class="container contact-inner">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-index">07 /</span>
       <h2 class="section-title">Contact</h2>
       <span class="section-rule"></span>
     </div>
-    <p class="contact-headline">Let's build something worth shipping.</p>
-    <div class="contact-details">
+    <p class="contact-headline reveal reveal-delay-1">Let's build something worth shipping.</p>
+    <div class="contact-details reveal reveal-delay-2">
       <a href="mailto:aangelap19198@gmail.com" class="contact-link">aangelap19198@gmail.com</a>
       <a href="tel:+34636843243" class="contact-link">+34 636 843 243</a>
       <span class="contact-link">Madrid, Spain</span>
     </div>
-    <div class="contact-social">
+    <div class="contact-social reveal reveal-delay-3">
       <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">LinkedIn</a>
       <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">GitHub</a>
     </div>

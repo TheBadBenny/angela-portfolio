@@ -3,21 +3,21 @@ const certifications = [
   { name: 'Advanced Scrum Master by SAFe', issuer: 'Scaled Agile Inc.' },
   { name: 'ITIL 4 Foundation Certificate', issuer: '' },
   { name: 'ICAgile Certified Professional', issuer: '' },
-  { name: 'SMPC – Scrum Master Professional Certified', issuer: 'EIGP' },
+  { name: 'SMPC - Scrum Master Professional Certified', issuer: 'EIGP' },
   { name: 'The PowerMBA Future Leaders', issuer: 'Business Management and Administration' },
 ];
 ---
 
 <section class="certifications" id="certifications">
   <div class="container certifications-inner">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-index">05 /</span>
       <h2 class="section-title">Certifications</h2>
       <span class="section-rule"></span>
     </div>
     <ul class="cert-list">
       {certifications.map(cert => (
-        <li class="cert-item">
+        <li class="cert-item reveal">
           <span class="cert-marker" aria-hidden="true"></span>
           <div>
             <span class="cert-name">{cert.name}</span>

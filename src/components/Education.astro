@@ -20,14 +20,14 @@ const education = [
 
 <section class="education" id="education">
   <div class="container education-inner">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-index">04 /</span>
       <h2 class="section-title">Education</h2>
       <span class="section-rule"></span>
     </div>
     <div class="education-grid">
-      {education.map(item => (
-        <article class="education-card">
+      {education.map((item, i) => (
+        <article class={`education-card reveal reveal-delay-${i + 1}`}>
           <h3 class="education-degree">{item.degree}</h3>
           <p class="education-institution">{item.institution}</p>
           <span class="education-dates">{item.dates}</span>
@@ -53,6 +53,12 @@ const education = [
     border: 1px solid var(--color-border);
     border-radius: 8px;
     padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .education-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   }
 
   .education-degree {

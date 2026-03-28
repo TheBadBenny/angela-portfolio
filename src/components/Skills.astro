@@ -17,14 +17,14 @@ const skillGroups = [
 
 <section class="skills" id="skills">
   <div class="container skills-inner">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-index">03 /</span>
       <h2 class="section-title">Skills</h2>
       <span class="section-rule"></span>
     </div>
     <div class="skill-groups">
       {skillGroups.map(group => (
-        <div class="skill-group">
+        <div class="skill-group reveal">
           <h3 class="skill-group-title">{group.title}</h3>
           <div class="skill-chips">
             {group.skills.map(skill => (
@@ -68,12 +68,13 @@ const skillGroups = [
     background-color: var(--color-accent-light);
     padding: 8px 16px;
     border-radius: 100px;
-    transition: background-color 0.2s, color 0.2s;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
     cursor: default;
   }
 
   .chip:hover {
     background-color: var(--color-accent);
     color: var(--color-white);
+    transform: translateY(-2px);
   }
 </style>

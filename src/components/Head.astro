@@ -14,12 +14,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL.href} />
+<meta name="author" content="Ángela Álvarez Pérez" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#1A3A2A" />
 
 <!-- Open Graph -->
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:type" content="website" />
 <meta property="og:url" content={canonicalURL.href} />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:site_name" content="Ángela Álvarez Pérez — Portfolio" />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary" />
@@ -33,10 +38,43 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   "name": "Ángela Álvarez Pérez",
   "jobTitle": "IT Engineer",
   "email": "aangelap19198@gmail.com",
+  "telephone": "+34636843243",
   "url": "https://angelaalvarez.dev",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Madrid",
     "addressCountry": "Spain"
-  }
+  },
+  "knowsLanguage": ["Spanish", "English", "French"],
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "University of Oviedo"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Complutense University of Madrid"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "European University Miguel de Cervantes"
+    }
+  ],
+  "hasCredential": [
+    { "@type": "EducationalOccupationalCredential", "name": "Advanced Scrum Master by SAFe" },
+    { "@type": "EducationalOccupationalCredential", "name": "ITIL 4 Foundation Certificate" },
+    { "@type": "EducationalOccupationalCredential", "name": "ICAgile Certified Professional" },
+    { "@type": "EducationalOccupationalCredential", "name": "SMPC - Scrum Master Professional Certified" },
+    { "@type": "EducationalOccupationalCredential", "name": "The PowerMBA Future Leaders" }
+  ]
+})} />
+
+<!-- JSON-LD WebSite Schema -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Ángela Álvarez Pérez — IT Engineer",
+  "url": "https://angelaalvarez.dev",
+  "description": description,
+  "inLanguage": "es"
 })} />

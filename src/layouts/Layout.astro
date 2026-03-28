@@ -15,11 +15,82 @@ const { title, description } = Astro.props;
 <html lang="es">
   <head>
     <Head title={title} description={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body>
     <Nav />
     <main>
       <slot />
     </main>
+    <script>
+      // Scroll-reveal observer
+      const revealElements = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+      );
+      revealElements.forEach((el) => observer.observe(el));
+
+      // Counter animation for hero stats
+      const counters = document.querySelectorAll('[data-count]');
+      const counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target as HTMLElement;
+            const target = el.dataset.count!;
+            const num = parseInt(target);
+            const suffix = target.replace(/\d+/, '');
+            const duration = 1200;
+            const start = performance.now();
+
+            function tick(now: number) {
+              const elapsed = now - start;
+              const progress = Math.min(elapsed / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const current = Math.round(eased * num);
+              el.textContent = current + suffix;
+              if (progress < 1) requestAnimationFrame(tick);
+            }
+
+            el.textContent = '0' + suffix;
+            requestAnimationFrame(tick);
+            counterObserver.unobserve(el);
+          });
+        },
+        { threshold: 0.5 }
+      );
+      counters.forEach((el) => counterObserver.observe(el));
+
+      // Active nav link highlighting
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-links a');
+
+      const navObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              navLinks.forEach((link) => {
+                link.classList.toggle(
+                  'active',
+                  link.getAttribute('href') === `#${id}`
+                );
+              });
+            }
+          });
+        },
+        { threshold: 0.3, rootMargin: '-60px 0px -40% 0px' }
+      );
+      sections.forEach((s) => navObserver.observe(s));
+    </script>
   </body>
 </html>

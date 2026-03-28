@@ -10,23 +10,23 @@ const stats = [
 <section class="hero" id="hero">
   <div class="hero-inner">
     <div class="hero-left">
-      <span class="hero-tag">IT Engineer · Madrid, Spain</span>
-      <h1 class="hero-name">
+      <span class="hero-tag hero-fade hero-fade-1">IT Engineer · Madrid, Spain</span>
+      <h1 class="hero-name hero-fade hero-fade-2">
         Ángela<br />
         <em>Álvarez</em><br />
         Pérez
       </h1>
-      <p class="hero-bio">
+      <p class="hero-bio hero-fade hero-fade-3">
         Bridging service management and technology to deliver impactful digital
         solutions — with an Agile mindset and a data-driven approach.
       </p>
-      <a href="#experience" class="hero-cta">View my work →</a>
+      <a href="#experience" class="hero-cta hero-fade hero-fade-4">View my work →</a>
     </div>
     <div class="hero-right">
       <div class="hero-stats">
         {stats.map(stat => (
           <div class="stat">
-            <span class="stat-value">{stat.value}</span>
+            <span class="stat-value" data-count={stat.value}>{stat.value}</span>
             <span class="stat-label">{stat.label}</span>
           </div>
         ))}
@@ -57,6 +57,25 @@ const stats = [
     padding: 4rem 3rem 4rem 2rem;
     max-width: 700px;
     margin-left: auto;
+  }
+
+  /* Hero entrance animations */
+  .hero-fade {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .hero-fade-1 { animation-delay: 0.1s; }
+  .hero-fade-2 { animation-delay: 0.25s; }
+  .hero-fade-3 { animation-delay: 0.4s; }
+  .hero-fade-4 { animation-delay: 0.55s; }
+
+  @keyframes heroFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .hero-tag {
@@ -101,12 +120,13 @@ const stats = [
     background-color: var(--color-accent);
     padding: 14px 28px;
     border-radius: 6px;
-    transition: opacity 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
     width: fit-content;
   }
 
   .hero-cta:hover {
-    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 58, 42, 0.25);
   }
 
   .hero-right {
@@ -157,12 +177,30 @@ const stats = [
     border-radius: 50%;
     background-color: var(--color-green-dot);
     box-shadow: 0 0 6px var(--color-green-dot);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
   }
 
   .availability-text {
     font-family: 'DM Mono', monospace;
     font-size: 0.8125rem;
     color: var(--color-accent-light);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-fade {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+
+    .availability-dot {
+      animation: none;
+    }
   }
 
   @media (max-width: 768px) {
