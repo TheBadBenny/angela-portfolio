@@ -28,12 +28,9 @@ const education = [
     <div class="education-grid">
       {education.map((item, i) => (
         <article class={`education-card reveal reveal-delay-${i + 1}`}>
-          <div class="education-accent" aria-hidden="true"></div>
-          <div class="education-body">
-            <span class="education-dates">{item.dates}</span>
-            <h3 class="education-degree">{item.degree}</h3>
-            <p class="education-institution">{item.institution}</p>
-          </div>
+          <span class="education-dates">{item.dates}</span>
+          <h3 class="education-degree">{item.degree}</h3>
+          <p class="education-institution">{item.institution}</p>
         </article>
       ))}
     </div>
@@ -49,16 +46,31 @@ const education = [
   .education-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
   .education-card {
     background-color: var(--color-white);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    overflow: hidden;
+    padding: 2rem 1.75rem;
     box-shadow: var(--shadow-sm);
     transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .education-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--color-accent), var(--color-indigo));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .education-card:hover {
@@ -66,33 +78,29 @@ const education = [
     box-shadow: var(--shadow-md);
   }
 
-  .education-accent {
-    height: 3px;
-    background: linear-gradient(to right, var(--color-gold), var(--color-accent));
-  }
-
-  .education-body {
-    padding: 1.5rem;
+  .education-card:hover::after {
+    transform: scaleX(1);
   }
 
   .education-dates {
     font-family: 'DM Mono', monospace;
     font-size: 0.75rem;
-    color: var(--color-gold);
+    color: var(--color-accent);
     letter-spacing: 0.04em;
     display: block;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
 
   .education-degree {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.0625rem;
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
+    margin-bottom: 0.625rem;
+    line-height: 1.35;
+    color: var(--color-ink);
   }
 
   .education-institution {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 0.8125rem;
     color: var(--color-ink-faint);
@@ -113,12 +121,8 @@ const education = [
       grid-template-columns: 1fr;
     }
 
-    .education-body {
-      padding: 1.25rem;
-    }
-
-    .education-degree {
-      font-size: 1rem;
+    .education-card {
+      padding: 1.5rem;
     }
 
     .education-card:hover {

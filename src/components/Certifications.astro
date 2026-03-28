@@ -16,14 +16,10 @@ const certifications = [
       <span class="section-rule"></span>
     </div>
     <div class="cert-grid">
-      {certifications.map(cert => (
+      {certifications.map((cert, i) => (
         <div class="cert-card reveal">
-          <span class="cert-marker" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <div>
+          <span class="cert-num">{String(i + 1).padStart(2, '0')}</span>
+          <div class="cert-body">
             <span class="cert-name">{cert.name}</span>
             {cert.issuer && <span class="cert-issuer">{cert.issuer}</span>}
           </div>
@@ -40,9 +36,13 @@ const certifications = [
   }
 
   .cert-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
+  }
+
+  .cert-grid .cert-card:last-child {
+    grid-column: 1 / -1;
   }
 
   .cert-card {
@@ -57,25 +57,25 @@ const certifications = [
   }
 
   .cert-card:hover {
-    border-color: var(--color-gold);
-    box-shadow: 0 2px 8px rgba(196, 163, 90, 0.1);
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-md);
   }
 
-  .cert-marker {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    min-width: 28px;
-    border-radius: 50%;
-    background-color: var(--color-gold-light);
-    color: var(--color-gold);
-    margin-top: 2px;
+  .cert-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    line-height: 1;
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+
+  .cert-body {
+    padding-top: 2px;
   }
 
   .cert-name {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 0.9375rem;
     color: var(--color-ink);
@@ -84,12 +84,22 @@ const certifications = [
   }
 
   .cert-issuer {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 300;
     font-size: 0.8125rem;
     color: var(--color-ink-faint);
     display: block;
-    margin-top: 2px;
+    margin-top: 3px;
+  }
+
+  @media (max-width: 640px) {
+    .cert-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cert-grid .cert-card:last-child {
+      grid-column: auto;
+    }
   }
 
   @media (max-width: 480px) {

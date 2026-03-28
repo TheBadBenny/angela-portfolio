@@ -1,34 +1,37 @@
 ---
 const stats = [
-  { value: '4+', label: 'Years experience' },
+  { value: '4+', label: 'Years' },
   { value: '3', label: 'Companies' },
   { value: '5+', label: 'Certifications' },
-  { value: '2', label: 'Masters degrees' },
+  { value: '2', label: 'Masters' },
 ];
 ---
 
 <section class="hero" id="hero">
-  <div class="hero-inner">
-    <div class="hero-left">
-      <span class="hero-tag hero-fade hero-fade-1">IT Engineer · Madrid, Spain</span>
-      <h1 class="hero-name hero-fade hero-fade-2">
-        Ángela<br />
-        <em>Álvarez</em><br />
-        Pérez
-      </h1>
-      <p class="hero-bio hero-fade hero-fade-3">
-        Bridging service management and technology to deliver impactful digital
-        solutions — with an Agile mindset and a data-driven approach.
-      </p>
-      <a href="#experience" class="hero-cta hero-fade hero-fade-4">
-        <span>View my work</span>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-    </div>
-    <div class="hero-right">
-      <div class="hero-stats">
+  <div class="hero-bg">
+    <div class="hero-inner container">
+      <div class="hero-content">
+        <span class="hero-tag hero-fade hero-fade-1">IT Engineer · Madrid</span>
+        <h1 class="hero-name hero-fade hero-fade-2">
+          <span class="name-first">Ángela</span>
+          <span class="name-last">Álvarez<br />Pérez</span>
+        </h1>
+        <p class="hero-bio hero-fade hero-fade-3">
+          Bridging service management and technology to deliver impactful digital
+          solutions — with an Agile mindset and a data-driven approach.
+        </p>
+        <div class="hero-actions hero-fade hero-fade-4">
+          <a href="#experience" class="hero-cta">
+            View my work
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="hero-availability">
+            <span class="availability-dot" aria-hidden="true"></span>
+            <span class="availability-text">Open to opportunities</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-stats hero-fade hero-fade-4">
         {stats.map(stat => (
           <div class="stat">
             <span class="stat-value" data-count={stat.value}>{stat.value}</span>
@@ -36,111 +39,124 @@ const stats = [
           </div>
         ))}
       </div>
-      <div class="hero-availability">
-        <span class="availability-dot" aria-hidden="true"></span>
-        <span class="availability-text">Open to new opportunities</span>
-      </div>
     </div>
   </div>
 </section>
 
 <style>
   .hero {
-    background-color: var(--color-bg);
     overflow: hidden;
   }
 
+  .hero-bg {
+    background-color: var(--color-bg-dark);
+    position: relative;
+  }
+
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 15% 80%, rgba(194, 101, 74, 0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 85% 20%, rgba(45, 42, 74, 0.3) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
   .hero-inner {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    min-height: 90vh;
-  }
-
-  .hero-left {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5rem 4rem 5rem 0;
-    max-width: 640px;
-    margin-left: auto;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 92vh;
+    gap: 4rem;
+    position: relative;
   }
 
-  /* Hero entrance animations */
+  .hero-content {
+    max-width: 600px;
+    padding: 4rem 0;
+  }
+
   .hero-fade {
     opacity: 0;
     transform: translateY(24px);
     animation: heroFadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  .hero-fade-1 { animation-delay: 0.15s; }
-  .hero-fade-2 { animation-delay: 0.3s; }
-  .hero-fade-3 { animation-delay: 0.5s; }
-  .hero-fade-4 { animation-delay: 0.65s; }
+  .hero-fade-1 { animation-delay: 0.2s; }
+  .hero-fade-2 { animation-delay: 0.35s; }
+  .hero-fade-3 { animation-delay: 0.55s; }
+  .hero-fade-4 { animation-delay: 0.7s; }
 
   @keyframes heroFadeIn {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .hero-tag {
     font-family: 'DM Mono', monospace;
     font-size: 0.75rem;
-    color: var(--color-gold);
+    color: var(--color-accent);
     text-transform: uppercase;
-    letter-spacing: 0.14em;
-    margin-bottom: 1.75rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .hero-tag::before {
-    content: '';
+    letter-spacing: 0.16em;
+    margin-bottom: 2rem;
     display: inline-block;
-    width: 24px;
-    height: 1px;
-    background-color: var(--color-gold);
   }
 
   .hero-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 4rem;
-    line-height: 1.08;
-    color: var(--color-ink);
-    margin-bottom: 1.75rem;
-    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+    line-height: 1;
   }
 
-  .hero-name em {
-    color: var(--color-accent);
-    font-style: italic;
+  .name-first {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .name-last {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 400;
+    color: var(--color-white);
+    line-height: 1.02;
+    display: block;
+    letter-spacing: -0.02em;
   }
 
   .hero-bio {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 300;
-    font-size: 1.125rem;
-    color: var(--color-ink-muted);
-    line-height: 1.75;
+    font-size: 1.0625rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.8;
     margin-bottom: 2.5rem;
-    max-width: 440px;
+    max-width: 460px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
   }
 
   .hero-cta {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 500;
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     color: var(--color-white);
     background-color: var(--color-accent);
-    padding: 15px 30px;
-    border-radius: var(--radius-sm);
-    transition: background-color 0.25s, transform 0.25s, box-shadow 0.25s;
-    width: fit-content;
+    padding: 14px 28px;
+    border-radius: 100px;
+    transition: background-color 0.25s, transform 0.2s, box-shadow 0.25s;
   }
 
   .hero-cta svg {
@@ -150,168 +166,156 @@ const stats = [
   .hero-cta:hover {
     background-color: var(--color-accent-hover);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(26, 58, 42, 0.2);
+    box-shadow: 0 8px 24px rgba(194, 101, 74, 0.25);
   }
 
   .hero-cta:hover svg {
     transform: translateX(3px);
   }
 
-  .hero-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--color-accent);
-    padding: 4rem 3rem;
-    position: relative;
-  }
-
-  .hero-right::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse at 30% 20%, rgba(196, 163, 90, 0.08) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  .hero-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem 4rem;
-    margin-bottom: 3.5rem;
-    position: relative;
-  }
-
-  .stat {
-    text-align: center;
-    position: relative;
-  }
-
-  .stat-value {
-    display: block;
-    font-family: 'DM Serif Display', serif;
-    font-size: 2.75rem;
-    color: var(--color-white);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-
-  .stat-label {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 300;
-    font-size: 0.8125rem;
-    color: rgba(255, 255, 255, 0.55);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
   .hero-availability {
     display: flex;
     align-items: center;
-    gap: 10px;
-    background-color: rgba(255, 255, 255, 0.08);
-    padding: 10px 20px;
-    border-radius: 100px;
+    gap: 8px;
   }
 
   .availability-dot {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background-color: var(--color-green-dot);
     box-shadow: 0 0 8px var(--color-green-dot);
-    animation: pulse 2s ease-in-out infinite;
+    animation: pulse 2.5s ease-in-out infinite;
   }
 
   @keyframes pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--color-green-dot); }
-    50% { opacity: 0.6; box-shadow: 0 0 4px var(--color-green-dot); }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
   }
 
   .availability-text {
     font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.6875rem;
+    color: rgba(255, 255, 255, 0.35);
     letter-spacing: 0.02em;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .hero-fade {
-      opacity: 1;
-      transform: none;
-      animation: none;
-    }
+  /* Stats — vertical strip on the right */
+  .hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    padding-left: 3rem;
+    flex-shrink: 0;
+  }
 
-    .availability-dot {
-      animation: none;
-    }
+  .stat {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .stat:last-child {
+    border-bottom: none;
+  }
+
+  .stat-value {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--color-white);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.6875rem;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-fade { opacity: 1; transform: none; animation: none; }
+    .availability-dot { animation: none; }
   }
 
   @media (max-width: 768px) {
     .hero-inner {
-      grid-template-columns: 1fr;
+      flex-direction: column;
+      align-items: flex-start;
       min-height: auto;
+      gap: 0;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
     }
 
-    .hero-left {
-      padding: 3.5rem 1.5rem;
-      max-width: none;
-      margin-left: 0;
+    .hero-content {
+      padding: 0;
     }
 
-    .hero-name {
-      font-size: 2.75rem;
-    }
-
-    .hero-right {
-      padding: 3rem 1.5rem;
+    .name-last {
+      font-size: 3.5rem;
     }
 
     .hero-stats {
-      gap: 2rem 3rem;
+      border-left: none;
+      padding-left: 0;
+      flex-direction: row;
+      gap: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      width: 100%;
+      margin-top: 2rem;
+    }
+
+    .stat {
+      flex: 1;
+      text-align: center;
+      padding: 1.5rem 0.5rem;
+      border-bottom: none;
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .stat:last-child {
+      border-right: none;
     }
 
     .stat-value {
-      font-size: 2.25rem;
+      font-size: 2rem;
     }
   }
 
   @media (max-width: 480px) {
-    .hero-left {
-      padding: 2.5rem 1rem;
+    .name-first {
+      font-size: 1rem;
     }
 
-    .hero-name {
-      font-size: 2.25rem;
+    .name-last {
+      font-size: 2.5rem;
     }
 
     .hero-bio {
-      font-size: 1rem;
+      font-size: 0.9375rem;
     }
 
     .hero-cta {
-      padding: 16px 32px;
-      font-size: 1rem;
+      padding: 14px 26px;
     }
 
-    .hero-right {
-      padding: 2.5rem 1rem;
-    }
-
-    .hero-stats {
-      gap: 1.5rem 2rem;
+    .hero-actions {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
     }
 
     .stat-value {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
     }
 
     .stat-label {
-      font-size: 0.75rem;
+      font-size: 0.625rem;
     }
   }
 </style>
