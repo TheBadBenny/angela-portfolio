@@ -1,0 +1,196 @@
+---
+const stats = [
+  { value: '4+', label: 'Years experience' },
+  { value: '3', label: 'Companies' },
+  { value: '5+', label: 'Certifications' },
+  { value: '2', label: 'Masters degrees' },
+];
+---
+
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <span class="hero-tag">IT Engineer · Madrid, Spain</span>
+      <h1 class="hero-name">
+        Ángela<br />
+        <em>Álvarez</em><br />
+        Pérez
+      </h1>
+      <p class="hero-bio">
+        Bridging service management and technology to deliver impactful digital
+        solutions — with an Agile mindset and a data-driven approach.
+      </p>
+      <a href="#experience" class="hero-cta">View my work →</a>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stats">
+        {stats.map(stat => (
+          <div class="stat">
+            <span class="stat-value">{stat.value}</span>
+            <span class="stat-label">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+      <div class="hero-availability">
+        <span class="availability-dot" aria-hidden="true"></span>
+        <span class="availability-text">Open to new opportunities</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 3rem 4rem 2rem;
+    max-width: 700px;
+    margin-left: auto;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    color: var(--color-ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name em {
+    color: var(--color-accent);
+    font-style: italic;
+  }
+
+  .hero-bio {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    font-size: 1.125rem;
+    color: var(--color-ink-muted);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 480px;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    color: var(--color-white);
+    background-color: var(--color-accent);
+    padding: 14px 28px;
+    border-radius: 6px;
+    transition: opacity 0.2s;
+    width: fit-content;
+  }
+
+  .hero-cta:hover {
+    opacity: 0.9;
+  }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-accent);
+    padding: 4rem 2rem;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    color: var(--color-white);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    font-size: 0.875rem;
+    color: var(--color-accent-light);
+  }
+
+  .hero-availability {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .availability-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-green-dot);
+    box-shadow: 0 0 6px var(--color-green-dot);
+  }
+
+  .availability-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8125rem;
+    color: var(--color-accent-light);
+  }
+
+  @media (max-width: 768px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-left {
+      padding: 3rem 1.25rem;
+      max-width: none;
+      margin-left: 0;
+    }
+
+    .hero-name {
+      font-size: 2.5rem;
+    }
+
+    .hero-right {
+      padding: 3rem 1.25rem;
+    }
+
+    .hero-stats {
+      gap: 1.5rem;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+    }
+  }
+</style>

@@ -1,0 +1,79 @@
+---
+const skillGroups = [
+  {
+    title: 'Project & Service Management',
+    skills: ['Project Management', 'Incident Management', 'Problem Resolution', 'Team Organization', 'Agile', 'Scrum', 'SAFe', 'ITIL 4'],
+  },
+  {
+    title: 'Data & Development',
+    skills: ['Python', 'Big Data', 'Power BI', 'Tableau'],
+  },
+  {
+    title: 'Tools',
+    skills: ['ServiceNow', 'JIRA', 'Office Suite'],
+  },
+];
+---
+
+<section class="skills" id="skills">
+  <div class="container skills-inner">
+    <div class="section-header">
+      <span class="section-index">03 /</span>
+      <h2 class="section-title">Skills</h2>
+      <span class="section-rule"></span>
+    </div>
+    <div class="skill-groups">
+      {skillGroups.map(group => (
+        <div class="skill-group">
+          <h3 class="skill-group-title">{group.title}</h3>
+          <div class="skill-chips">
+            {group.skills.map(skill => (
+              <span class="chip">{skill}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills {
+    padding: 5rem 0;
+  }
+
+  .skill-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .skill-group-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+
+  .skill-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .chip {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: var(--color-ink);
+    background-color: var(--color-accent-light);
+    padding: 8px 16px;
+    border-radius: 100px;
+    transition: background-color 0.2s, color 0.2s;
+    cursor: default;
+  }
+
+  .chip:hover {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+  }
+</style>

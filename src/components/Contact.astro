@@ -1,0 +1,148 @@
+---
+const languages = [
+  { lang: 'Spanish', level: 'Native' },
+  { lang: 'English', level: 'Advanced / C1' },
+  { lang: 'French', level: 'Elementary' },
+];
+---
+
+<section class="languages" id="languages">
+  <div class="container languages-inner">
+    <div class="section-header">
+      <span class="section-index">06 /</span>
+      <h2 class="section-title">Languages</h2>
+      <span class="section-rule"></span>
+    </div>
+    <div class="lang-chips">
+      {languages.map((item, i) => (
+        <>
+          <span class="lang-chip">
+            <strong>{item.lang}</strong> ({item.level})
+          </span>
+          {i < languages.length - 1 && <span class="lang-sep" aria-hidden="true">·</span>}
+        </>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container contact-inner">
+    <div class="section-header">
+      <span class="section-index">07 /</span>
+      <h2 class="section-title">Contact</h2>
+      <span class="section-rule"></span>
+    </div>
+    <p class="contact-headline">Let's build something worth shipping.</p>
+    <div class="contact-details">
+      <a href="mailto:aangelap19198@gmail.com" class="contact-link">aangelap19198@gmail.com</a>
+      <a href="tel:+34636843243" class="contact-link">+34 636 843 243</a>
+      <span class="contact-link">Madrid, Spain</span>
+    </div>
+    <div class="contact-social">
+      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">LinkedIn</a>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <p>&copy; 2026 Ángela Álvarez Pérez · Madrid, Spain</p>
+  </div>
+</footer>
+
+<style>
+  .languages {
+    padding: 5rem 0;
+  }
+
+  .lang-chips {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .lang-chip {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--color-ink);
+  }
+
+  .lang-chip strong {
+    font-weight: 500;
+  }
+
+  .lang-sep {
+    color: var(--color-ink-faint);
+    font-size: 1.25rem;
+  }
+
+  .contact {
+    padding: 5rem 0;
+  }
+
+  .contact-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--color-ink);
+    margin-bottom: 2rem;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-link {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--color-ink-muted);
+    transition: color 0.2s;
+    width: fit-content;
+  }
+
+  a.contact-link:hover {
+    color: var(--color-accent);
+  }
+
+  .contact-social {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .contact-social a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    transition: opacity 0.2s;
+  }
+
+  .contact-social a:hover {
+    opacity: 0.7;
+  }
+
+  .footer {
+    padding: 2rem 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .footer-inner p {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    font-size: 0.875rem;
+    color: var(--color-ink-faint);
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .contact-headline {
+      font-size: 1.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,72 @@
+---
+const certifications = [
+  { name: 'Advanced Scrum Master by SAFe', issuer: 'Scaled Agile Inc.' },
+  { name: 'ITIL 4 Foundation Certificate', issuer: '' },
+  { name: 'ICAgile Certified Professional', issuer: '' },
+  { name: 'SMPC – Scrum Master Professional Certified', issuer: 'EIGP' },
+  { name: 'The PowerMBA Future Leaders', issuer: 'Business Management and Administration' },
+];
+---
+
+<section class="certifications" id="certifications">
+  <div class="container certifications-inner">
+    <div class="section-header">
+      <span class="section-index">05 /</span>
+      <h2 class="section-title">Certifications</h2>
+      <span class="section-rule"></span>
+    </div>
+    <ul class="cert-list">
+      {certifications.map(cert => (
+        <li class="cert-item">
+          <span class="cert-marker" aria-hidden="true"></span>
+          <div>
+            <span class="cert-name">{cert.name}</span>
+            {cert.issuer && <span class="cert-issuer"> — {cert.issuer}</span>}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .certifications {
+    padding: 5rem 0;
+  }
+
+  .cert-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .cert-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .cert-marker {
+    width: 8px;
+    height: 8px;
+    min-width: 8px;
+    border-radius: 50%;
+    background-color: var(--color-gold);
+    margin-top: 8px;
+  }
+
+  .cert-name {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--color-ink);
+  }
+
+  .cert-issuer {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    font-size: 0.9375rem;
+    color: var(--color-ink-muted);
+  }
+</style>
