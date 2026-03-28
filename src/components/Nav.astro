@@ -11,13 +11,43 @@ const links = [
 <nav class="nav" aria-label="Main navigation">
   <div class="nav-inner container">
     <a href="#" class="nav-logo" aria-label="Go to top">Å.Á</a>
-    <ul class="nav-links" role="list">
+    <ul class="nav-links" role="list" id="nav-links">
       {links.map(link => (
         <li><a href={link.href}>{link.label}</a></li>
       ))}
     </ul>
+    <button
+      class="nav-toggle"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="nav-links"
+      id="nav-toggle"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </div>
 </nav>
+
+<script>
+  const toggle = document.getElementById('nav-toggle')!;
+  const links = document.getElementById('nav-links')!;
+
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  links.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).tagName === 'A') {
+      links.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
 
 <style>
   .nav {
@@ -42,6 +72,7 @@ const links = [
     font-weight: 400;
     color: var(--color-accent);
     letter-spacing: 0.02em;
+    padding: 8px 0;
   }
 
   .nav-links {
@@ -56,6 +87,7 @@ const links = [
     font-weight: 400;
     color: var(--color-ink-muted);
     transition: color 0.2s;
+    padding: 8px 0;
   }
 
   .nav-links a:hover,
@@ -63,9 +95,44 @@ const links = [
     color: var(--color-accent);
   }
 
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 12px;
+    margin-right: -12px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .nav-toggle .bar {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: var(--color-ink);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .nav-toggle.open .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .nav-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.open .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
   @media (max-width: 768px) {
     .nav-links {
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     .nav-links a {
@@ -73,13 +140,37 @@ const links = [
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
+    .nav-toggle {
+      display: flex;
+    }
+
     .nav-links {
-      gap: 0.75rem;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      padding: 1rem 1.5rem 1.5rem;
+      gap: 0;
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: opacity 0.25s, transform 0.25s;
+    }
+
+    .nav-links.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
     }
 
     .nav-links a {
-      font-size: 0.75rem;
+      font-size: 1rem;
+      padding: 12px 0;
+      display: block;
     }
   }
 </style>

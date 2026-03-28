@@ -105,6 +105,9 @@ const languages = [
     color: var(--color-ink-muted);
     transition: color 0.2s;
     width: fit-content;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
 
   a.contact-link:hover {
@@ -121,6 +124,9 @@ const languages = [
     font-size: 0.875rem;
     color: var(--color-accent);
     transition: opacity 0.2s;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
 
   .contact-social a:hover {
@@ -143,6 +149,12 @@ const languages = [
   @media (max-width: 768px) {
     .contact-headline {
       font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-headline {
+      font-size: 1.25rem;
     }
   }
 </style>

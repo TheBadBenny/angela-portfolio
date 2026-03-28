@@ -155,10 +155,29 @@ const roles = [
     background-color: var(--color-gold);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     .timeline-item {
       grid-template-columns: 1fr;
-      gap: 0.5rem;
+      gap: 0.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .timeline-card {
+      padding: 1.25rem;
+    }
+
+    .timeline-role {
+      font-size: 1.125rem;
+    }
+
+    .timeline-bullets li {
+      font-size: 0.875rem;
+    }
+
+    .timeline-card:hover {
+      transform: none;
+      box-shadow: none;
     }
   }
 </style>
